@@ -73,7 +73,7 @@ class tabl_categories (_connect2db):
 				sql = u"SELECT * FROM Categories WHERE Categories."
 				sql = sql + str(colum_name)+ " "+ str(symbol)+ " "+ str(colum_data)
 				self.cursor.execute(str(sql))
-				numrows = int(self.cursor.rowcount)
+				numrows = int(self.cursor.rowcount)		
 				for x in range(0,numrows):
 					self.rows[x] = self.cursor.fetchone()
 				return self.rows
@@ -94,14 +94,16 @@ class tabl_region(_connect2db):
 				self.cursor.execute ("SELECT * FROM Region")
 			if colum_name in self.all_colums:
 				if symbol in self.all_symbol:
-					sql = "SELECT * FROM Region WHERE Region."
-					sql += colum_name + " " + symbol + " " + colum_data	
+					sql = "SELECT * FROM Region WHERE Region.%s %s %s" % (colum_name, symbol, colum_data)
 					self.cursor.execute (sql)
-			self.desc = self.cursor.description	
-			print "%s %s" % (self.desc[0][0], self.desc[1][0])
+				else:
+					return ValueError, "Wrong symbol"
+			else:
+				return ValueError, "Wrong colum name"
+			desc = self.cursor.description	
 			numrows = int(self.cursor.rowcount)
-			for x in range(0,numrows):
-				self.rows[x] = self.cursor.fetchone()
+			print "%s %s" % (desc[0][0], desc[1][0])
+			self.rows = self.cursor.fetchall()
 			for i in range(0,numrows):	
 				print self.rows[i][0],"      ", self.rows[i][1]
-			return self.rows
+			return self.rows	
