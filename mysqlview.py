@@ -17,4 +17,4 @@ show_tab ( B.categories_row("CategoryID", "=", "1") )
 #My test
 
 c=bufer.tabl_region()
-c.print_region()
+c.print_region("RegionId",">","2")
