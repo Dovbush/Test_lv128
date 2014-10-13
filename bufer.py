@@ -5,6 +5,7 @@ class _connect2db():
 		db = MySQLdb.connect (host= "85.10.205.173", user= "lamp128",
 							passwd= "Rfhnjyrf", db="testbase128", charset= 'utf8' )
 		self.cursor = db.cursor()
+		self.all_symbol = ["=", ">", "<", "!=", "<>", ">=", "<="]
 		
 
 class tabl_products (_connect2db):
