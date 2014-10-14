@@ -8,10 +8,10 @@ class ConectToDb(object):
 		self.cursor = db.cursor()
 		self.all_symbol = ["=", ">", "<", "!=", "<>", ">=", "<="]
 		
-class Tabl_region(ConectToDb):
+class TablRegion(ConectToDb):
 	def __init__(self):
 		self.rows={}
-		super(Tabl_region, self).__init__()
+		super(TablRegion, self).__init__()
 		self.all_colums = ["RegionId", "RegionDescription"]
 
 	def print_region(self, colum_name=None, symbol=None, colum_data=None):
@@ -43,7 +43,7 @@ class Tabl_region(ConectToDb):
 #def view(f):
 	#for i in f:
 		#print i
-my=Tabl_region()
+my=TablRegion()
 f=my.print_region("RegionId",">","2")
 #view(f)
 
