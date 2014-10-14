@@ -1,6 +1,6 @@
 import MySQLdb
 
-class conect_to_db(object):
+class ConectToDb(object):
 	def __init__(self):
 		db = MySQLdb.connect (host= "85.10.205.173", user= "lamp128",
 						        passwd= "Rfhnjyrf", db="testbase128", 
@@ -8,10 +8,10 @@ class conect_to_db(object):
 		self.cursor = db.cursor()
 		self.all_symbol = ["=", ">", "<", "!=", "<>", ">=", "<="]
 		
-class tabl_region(conect_to_db):
+class Tabl_region(ConectToDb):
 	def __init__(self):
 		self.rows={}
-		super(tabl_region, self).__init__()
+		super(Tabl_region, self).__init__()
 		self.all_colums = ["RegionId", "RegionDescription"]
 
 	def print_region(self, colum_name=None, symbol=None, colum_data=None):
@@ -43,7 +43,7 @@ class tabl_region(conect_to_db):
 #def view(f):
 	#for i in f:
 		#print i
-my=tabl_region()
+my=Tabl_region()
 f=my.print_region("RegionId",">","2")
 #view(f)
 
